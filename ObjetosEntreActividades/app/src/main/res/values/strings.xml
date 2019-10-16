@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">Persona</string>
+    <string name="app_name">Objetos entre actividades</string>
     <string name="app2_name">Persona Creada</string>
     <string name="saludo">Prueba de Saludo!</string>
     <string name="escribeNombre">Nombre:</string>
     <string name="escribeApellidos">Apellidos:</string>
     <string name="escribeEdad">Edad:</string>
     <string name="escribeFoto">Foto:</string>
-    <string name="pulsar">Pulsa Aqui</string>
+    <string name="crear">Crear persona</string>
     <string name="action_settings">Settings</string>
 </resources>
