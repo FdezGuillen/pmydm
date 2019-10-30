@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MenuInicial" >
+    <item android:id="@+id/MnuOpc1" android:title="Opcion1"
+        android:icon="@drawable/ic_android_black_24dp"></item>
+    <item android:id="@+id/MnuOpc2" android:title="Opcion2"
+        android:icon="@drawable/ic_add_circle_outline_black_24dp"></item>
+    <item android:id="@+id/MnuOpc3" android:title="Opcion3"
+        android:icon="@drawable/ic_directions_run_black_24dp">
+        <menu>
+            <item android:id="@+id/SubMnuOpc1"
+                android:title="Opcion 3.1" />
+            <item android:id="@+id/SubMnuOpc2"
+                android:title="Opcion 3.2" />
+        </menu>
+    </item>
+</menu>
