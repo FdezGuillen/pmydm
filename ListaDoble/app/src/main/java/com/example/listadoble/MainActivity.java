@@ -2,11 +2,17 @@ package com.example.listadoble;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -20,14 +26,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<String> librosCervantes = new ArrayList<String>();
-        librosCervantes.add("El Quijote");
-        librosCervantes.add("Novelas ejemplares");
+        String[] librosCervantes = new String[2];
+        librosCervantes[0] = "El Quijote";
+        librosCervantes[1] = "Novelas ejemplares";
 
-        ArrayList<String> librosShakespeare = new ArrayList<String>();
-        librosShakespeare.add("Hamlet");
-        librosShakespeare.add("Otelo");
-        librosShakespeare.add("Romeo y Julieta");
+        String[] librosShakespeare = new String[4];
+        librosShakespeare[0] = "Hamlet";
+        librosShakespeare[1] = "Otelo";
+        librosShakespeare[2] = "Romeo y Julieta";
+        librosShakespeare[3] = "Macbeth";
 
         autores[0] = new Autor("Cervantes", librosCervantes);
         autores[1] = new Autor("Shakespeare", librosShakespeare);
@@ -36,17 +43,18 @@ public class MainActivity extends AppCompatActivity {
 
        ListView lview = (ListView) findViewById(R.id.listView);
         try {
+
             lview.setAdapter(adaptador);
-
-
             lview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                 public void onItemClick(AdapterView arg0, View arg1, int position, long id) {
-                    String mensaje = "Nombre: " + autores[position].getNombre();
-
-                    Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG).show();
+                    Autor autor = autores[position];
+                    Intent miIntent= new Intent(MainActivity.this, ListaLibros.class);
+                    Bundle miBundle=new Bundle();
+                    miBundle.putSerializable("CLAVEautor", autor);
+                    miIntent.putExtras(miBundle);
+                    startActivity(miIntent);
                 }
-
                 public void onNothingSelected(AdapterView<?> adapterView) {
                 }
             });
@@ -55,14 +63,28 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        lview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView arg0, View arg1, int position, long id) {
-                String mensaje="";
-                mensaje="Item clicked => " + semana[position];
-                Toast.makeText(getApplicationContext(),mensaje, Toast.LENGTH_SHORT).show();
+    }
 
-            }
-        });
+    class AdaptadorAutores extends ArrayAdapter {
 
+        Activity context;
+
+        AdaptadorAutores(Activity context){
+            super(context, R.layout.listitem_autor, autores);
+            this.context = context;
+        }
+
+        public View getView(int i, View convertView, ViewGroup parent){
+            LayoutInflater inflater = context.getLayoutInflater();
+            View item = inflater.inflate(R.layout.listitem_autor, null);
+
+            TextView labelNombre = (TextView) item.findViewById(R.id.nombre);
+            labelNombre.setText(autores[i].getNombre());
+
+           /* ImageView imagen = (ImageView) item.findViewById(R.id.fotoPersona);
+            imagen.setImageResource(personas[i].getFoto());*/
+
+            return (item);
+        }
     }
 }

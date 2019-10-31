@@ -1,13 +1,14 @@
 package com.example.listadoble;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Autor {
+public class Autor implements Serializable {
 
     private String nombre;
-    private ArrayList<String> obras = new ArrayList<String>();
+    private String[] obras;
 
-    public Autor(String nombre, ArrayList<String> obras){
+    public Autor(String nombre, String[] obras){
         this.nombre = nombre;
         this.obras = obras;
     }
@@ -15,7 +16,7 @@ public class Autor {
     public String getNombre (){
         return nombre;
     }
-    public ArrayList<String> getObras(){
+    public String[] getObras(){
         return obras;
     }
 
@@ -23,11 +24,8 @@ public class Autor {
     public void setNombre(String nuevoNom){
         nombre=nuevoNom;
     }
-    public void setObras(ArrayList<String> obras){
+    public void setObras(String[] obras){
         this.obras = obras;
     }
 
-    public void addObra(String obra){
-        obras.add(obra);
-    }
 }
