@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
         miSpinner = (Spinner)findViewById(R.id.spPersona);
         AdaptadorPersonas miAdaptador = new AdaptadorPersonas(this);
         miSpinner.setAdapter(miAdaptador);
+
+
+
 
         miSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
