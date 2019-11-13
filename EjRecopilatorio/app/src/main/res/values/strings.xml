@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">EjRecopilatorio</string>
+    <string name="ph_peso">Peso del paquete:</string>
+    <string name="label_tarifa">Tipo de envío:</string>
+    <string name="rb_normal">Tarifa normal</string>
+    <string name="rb_urgente">Tarifa urgente</string>
+    <string name="label_complemento">Complementos:</string>
+    <string name="cb_regalo">Caja regalo</string>
+    <string name="cb_tarjeta">Tarjeta dedicada</string>
+    <string name="button_calcular">Calcular precio</string>
+    <string name="ctx_etiqueta">Información del destino</string>
+</resources>

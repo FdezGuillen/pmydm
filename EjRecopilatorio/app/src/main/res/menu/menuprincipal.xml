@@ -1,0 +1,7 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MenuInicial" >
+    <item android:id="@+id/MnuOpc1" android:title="Calcular precio"></item>
+    <item android:id="@+id/MnuOpc2" android:title="Dibujo"></item>
+    <item android:id="@+id/MnuOpc3" android:title="Acerca de"></item>
+</menu>
