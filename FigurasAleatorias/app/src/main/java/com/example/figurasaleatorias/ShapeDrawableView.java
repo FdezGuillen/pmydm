@@ -20,6 +20,9 @@ import java.util.List;
         private Integer[] mColors =
                 { Color.BLACK, Color.BLUE, Color.GREEN, Color.RED };
 
+        private int contCirc;
+        private int contCuad;
+
         public ShapeDrawableView(Context context) {
             super(context);    }
 
@@ -64,8 +67,10 @@ import java.util.List;
             Shape shape;
             if (Math.random() < 0.5) {
                 shape = new OvalShape();
+                contCirc++;
             } else {
                 shape = new RectShape();
+                contCuad++;
             }
             ShapeDrawable shapeD = new ShapeDrawable(shape);
             int width = RandomUtils.randomInt(maxWidth)+5;
