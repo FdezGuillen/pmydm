@@ -33,6 +33,7 @@ public class RandomShapeView extends View {
         super(context, attrs);
     }
 
+
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawColor(RandomUtils.randomElement(mBackgrounds));

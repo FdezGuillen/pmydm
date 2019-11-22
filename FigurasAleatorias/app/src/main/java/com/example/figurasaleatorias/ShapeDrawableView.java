@@ -20,14 +20,20 @@ import java.util.List;
         private Integer[] mColors =
                 { Color.BLACK, Color.BLUE, Color.GREEN, Color.RED };
 
-        private int contCirc;
-        private int contCuad;
+        private static int contOval;
+        private static int contRect;
 
         public ShapeDrawableView(Context context) {
-            super(context);    }
+            super(context);
+            contOval=0;
+            contRect=0;
+        }
 
         public ShapeDrawableView(Context context, AttributeSet attrs) {
-            super(context, attrs);    }
+            super(context, attrs);
+            contOval=0;
+            contRect=0;
+        }
 
         @Override
         protected void onDraw(Canvas canvas) {
@@ -67,10 +73,10 @@ import java.util.List;
             Shape shape;
             if (Math.random() < 0.5) {
                 shape = new OvalShape();
-                contCirc++;
+                contOval++;
             } else {
                 shape = new RectShape();
-                contCuad++;
+                contRect++;
             }
             ShapeDrawable shapeD = new ShapeDrawable(shape);
             int width = RandomUtils.randomInt(maxWidth)+5;
@@ -78,6 +84,14 @@ import java.util.List;
             shapeD.setBounds(x-width/2, y-height/2, x+width/2, y+height/2);
             shapeD.getPaint().setColor(RandomUtils.randomElement(mColors));
             return(shapeD);
+        }
+
+        public static int getContOval() {
+            return contOval;
+        }
+
+        public static int getContRect() {
+            return contRect;
         }
     }
 

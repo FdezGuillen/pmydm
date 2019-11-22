@@ -16,8 +16,19 @@
         android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textCont"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Contador"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <view
         class="com.example.figurasaleatorias.ShapeDrawableView"
+        android:id="@+id/vistaFiguras"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
