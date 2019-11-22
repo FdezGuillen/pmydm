@@ -49,7 +49,68 @@ public class VistaJuego extends View {
         bici = new Grafico(this, graficoBici);
     }
 
-    //Al comenzar
+    //Al comenzar y dibujar por primera vez la pantalla del juego
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh){
+        super.onSizeChanged(w,h,oldw,oldh);
+
+        //Dibujamos los coches en posiciones aleatorias
+        for (Grafico coche: Coches){
+            do{
+                coche.setPosX(Math.random()*(w-coche.getAncho()));
+                coche.setPosY(Math.random()*(h-coche.getAlto()));
+            }while(coche.distancia(bici) < (w+h)/5);
+        }
+        bici.setPosX(w/2-bici.getAncho());
+        bici.setPosY(h/2-bici.getAlto());
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas){
+        super.onDraw(canvas);
+        //Dibujamos cada uno de los coches
+        for(Grafico coche: Coches){
+            coche.dibujaGrafico(canvas);
+        }
+        bici.dibujaGrafico(canvas);
+    }
+
+    protected synchronized void actualizaMovimiento() {
+        long ahora = System.currentTimeMillis();
+        // No hacemos nada si el período de proceso no se ha cumplido.
+        if (ultimoProceso + PERIODO_PROCESO > ahora) {
+            return;
+        }
+        // Para una ejecución en tiempo real calculamos retardo
+        double retardo = (ahora - ultimoProceso) / PERIODO_PROCESO;
+        // Actualizamos la posición de la bici
+        bici.setAngulo((int) (bici.getAngulo() + giroBici * retardo));
+        double nIncX = bici.getIncX() + aceleracionBici
+                * Math.cos(Math.toRadians(bici.getAngulo())) * retardo;
+        double nIncY = bici.getIncY() + aceleracionBici
+                * Math.sin(Math.toRadians(bici.getAngulo())) * retardo;
+        if (Grafico.distanciaE(0, 0, nIncX, nIncY) <= Grafico.getMaxVelocidad()) {
+            bici.setIncX(nIncX);
+            bici.setIncY(nIncY);
+        }
+        bici.incrementaPos();
+
+        //Movemos los coches
+        for (Grafico coche : Coches) {
+            coche.incrementaPos();
+        }
+        ultimoProceso = ahora;
+    }
+
+    private class HiloJuego extends Thread {
+        @Override
+        public void run() {
+            while (true) {
+                actualizaMovimiento();
+            }
+        }
+    }
+
 }
 
 
