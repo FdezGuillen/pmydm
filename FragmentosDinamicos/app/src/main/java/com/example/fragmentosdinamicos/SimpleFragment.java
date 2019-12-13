@@ -4,17 +4,20 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 public class SimpleFragment extends Fragment {
     int mNum;
-    static SimpleFragment newInstance(int number) {
+    int imagen;
+    static SimpleFragment newInstance(int number, int imagen) {
         SimpleFragment f = new SimpleFragment();
         // Mantenemos el número para usarlo en cualquier momento.
         Bundle args = new Bundle();
         args.putInt("num", number);
+        args.putInt("img", imagen);
         f.setArguments(args);
         return f;
     }
@@ -25,6 +28,7 @@ public class SimpleFragment extends Fragment {
         // obtenemos el número que se habia pasado como argumento en
         // la creación de la instancia
         mNum = getArguments().getInt("num");
+        imagen = getArguments().getInt("img");
     }
 
     @Override
@@ -40,6 +44,8 @@ public class SimpleFragment extends Fragment {
         else{
             v = inflater.inflate(R.layout.frame_simple2 , container, false);
             tv = v.findViewById(R.id.text2);
+            ImageView imageView = v.findViewById(R.id.image);
+            imageView.setImageResource(imagen);
 
         }
 
