@@ -25,8 +25,11 @@ public class MainActivity extends AppCompatActivity {
         int cont = gridLayout.getChildCount();
 
         for (int i = 0; i < cont-1; i++) {
+
             ImageView imagen = (ImageView) gridLayout.getChildAt(i);
+
             if (imagen instanceof ImageView) {
+
                 final int randomImg = RandomUtils.randomElement(imagenes);
                 imagen.setImageResource(randomImg);
 
@@ -37,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
                         ultimaImagen.setImageResource(randomImg);
                     }
                 });
+
             }
+
         }
     }
 

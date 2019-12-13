@@ -61,8 +61,11 @@ public class VistaJuego extends View {
                 coche.setPosY(Math.random()*(h-coche.getAlto()));
             }while(coche.distancia(bici) < (w+h)/5);
         }
-        bici.setPosX(w/2-bici.getAncho());
-        bici.setPosY(h/2-bici.getAlto());
+        bici.setPosX((w-bici.getAncho())/2);
+        bici.setPosY((h-bici.getAlto())/2);
+
+        hiloJuego = new HiloJuego();
+        hiloJuego.start();
     }
 
     @Override
@@ -83,6 +86,7 @@ public class VistaJuego extends View {
         }
         // Para una ejecución en tiempo real calculamos retardo
         double retardo = (ahora - ultimoProceso) / PERIODO_PROCESO;
+
         // Actualizamos la posición de la bici
         bici.setAngulo((int) (bici.getAngulo() + giroBici * retardo));
         double nIncX = bici.getIncX() + aceleracionBici
