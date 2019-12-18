@@ -1,4 +1,4 @@
-package com.example.solobici;
+package com.example.movimientobici;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -14,7 +14,7 @@ import android.view.View;
 
 import java.util.Vector;
 
-public class VistaJuego extends View implements SensorEventListener {
+public class VistaJuego extends View implements SensorEventListener{
     //	COCHES	//
     private Vector<Grafico> Coches;	//Vector con los Coches
     private int numCoches = 5;	//Número inicial de Coches
@@ -300,6 +300,7 @@ public class VistaJuego extends View implements SensorEventListener {
     public void setPausa(boolean pausa) {
         this.pausa = pausa;
     }
+
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy){}
 
