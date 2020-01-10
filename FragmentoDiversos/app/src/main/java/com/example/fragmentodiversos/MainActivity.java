@@ -14,6 +14,17 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     int mStackPosition = 1;
+
+    static SimpleFragment newInstance(int number, int imagen) {
+        SimpleFragment f = new SimpleFragment();
+        // Mantenemos el número para usarlo en cualquier momento.
+        Bundle args = new Bundle();
+        args.putInt("num", number);
+        args.putInt("img", imagen);
+        f.setArguments(args);
+        return f;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

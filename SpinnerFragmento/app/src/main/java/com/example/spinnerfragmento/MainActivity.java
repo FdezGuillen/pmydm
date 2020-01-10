@@ -39,8 +39,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mFrg=(View)findViewById(R.id.miFrg);
-
-
         miSpinner = (Spinner)findViewById(R.id.spPersona);
         AdaptadorPersonas miAdaptador = new AdaptadorPersonas(this);
         miSpinner.setAdapter(miAdaptador);
